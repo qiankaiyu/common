@@ -1,0 +1,10 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        # exclude: 
+logging:
+  file:
+    name: temp.log
+    path: ../../../logs/
