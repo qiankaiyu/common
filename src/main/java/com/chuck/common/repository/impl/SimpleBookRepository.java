@@ -1,6 +1,7 @@
-package com.chuck.common.repository;
+package com.chuck.common.repository.impl;
 
 import com.chuck.common.domain.Book;
+import com.chuck.common.repository.BookRepository;
 
 import org.springframework.stereotype.Component;
 

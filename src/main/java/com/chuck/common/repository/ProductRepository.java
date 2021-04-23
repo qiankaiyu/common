@@ -1,10 +1,7 @@
 package com.chuck.common.repository;
 
-import com.chuck.common.domain.Product;
-
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,7 +11,8 @@ import org.springframework.stereotype.Repository;
  *
  **/
 @Repository
-public interface ProductRepository extends CrudRepository<Product, Integer> {
+public interface ProductRepository // extends CrudRepository<Product, Integer>
+{
     @Query("update Product p set p.stock=p.stock-?2,p.version=p.version+1 where p.id=?1 and p.version=?3")
     @Modifying
     public int decreaseProduct(int id, int quantity, int version);

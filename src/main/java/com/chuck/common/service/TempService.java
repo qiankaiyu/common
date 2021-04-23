@@ -1,4 +1,4 @@
-package com.chuck.common.services;
+package com.chuck.common.service;
 
 /**
  * @author Chuck

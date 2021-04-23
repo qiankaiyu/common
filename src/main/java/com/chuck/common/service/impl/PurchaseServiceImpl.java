@@ -1,3 +1,4 @@
+package com.chuck.common.service.impl;
 // package com.chuck.common.services.impl;
 
 // import javax.transaction.Transactional;

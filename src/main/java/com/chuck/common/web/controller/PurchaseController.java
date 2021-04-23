@@ -1,6 +1,6 @@
 package com.chuck.common.web.controller;
 
-import com.chuck.common.services.PurchaseService;
+import com.chuck.common.service.PurchaseService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,11 +1,9 @@
 server:
   port: 8081
 spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/common
-    username: chuck
-    password: asdasd123
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true  
+    show-sql: true
+  profiles:
+    active: prod

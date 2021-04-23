@@ -1,6 +1,6 @@
-package com.chuck.common.services.impl;
+package com.chuck.common.service.impl;
 
-import com.chuck.common.services.TempService;
+import com.chuck.common.service.TempService;
 
 /**
  * @author Chuck
