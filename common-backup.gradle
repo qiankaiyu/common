@@ -1,0 +1,43 @@
+
+plugins {
+    id 'java'
+    id "io.freefair.lombok" version "5.3.3.3"
+    id "groovy"
+}
+
+group = 'com.chuck'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+    // spock test
+    implementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation 'org.spockframework:spock-core:2.0-M4-groovy-3.0'
+    testImplementation 'org.spockframework:spock-spring:2.0-M4-groovy-3.0'
+    
+    // log4j 2
+    implementation 'org.apache.logging.log4j:log4j-api'
+    implementation 'org.apache.logging.log4j:log4j-core'
+    // implementation 'org.hibernate.validator:hibernate-validator'
+    
+    
+    // integrationTestImplementation platform("org.spockframework:spock-bom:2.0-M4-groovy-3.0")
+    // integrationTestImplementation 'org.spockframework:spock-core'
+    
+    // functionalTestImplementation platform("org.spockframework:spock-bom:2.0-M4-groovy-3.0")
+    // functionalTestImplementation 'org.spockframework:spock-core'
+
+    // compile fileTree(dir:'build/libs',include:['*.jar']) 表示编译时依赖本地的jar
+
+}
+
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}

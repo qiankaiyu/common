@@ -5,14 +5,7 @@ pluginManagement {
 	}
 }
 rootProject.name = 'common'
-// include 'licenses','organizaitons-A','organizaitons-B','special-routes'
-// include 'config-server','gateway','authentication','registry'
-
-// include 'model','repository','services','controllers'
-// include 'demo-payment'
-// FIXME
-// project(':demo-payment').projectDir = new File(rootDir, 'demo-payment/src/main/java')
+rootProject.buildFileName='common.gradle'
 // rootProject.children.each {
-    // it.buildFileName = it.name + '.gradle'
+//     it.buildFileName = it.name + '.gradle'
 // }
-
