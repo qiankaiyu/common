@@ -1,9 +1,0 @@
-server:
-  port: 8081
-spring:
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-  profiles:
-    active: prod

@@ -1,4 +1,4 @@
-package com.chuck.common.domain.enumeration;
+package com.chuck.common.enums;
 
 /**
  * 
@@ -6,7 +6,7 @@ package com.chuck.common.domain.enumeration;
  * @since 2021年4月10日
  * @version 0.0.1
  *
- *
+ *          性别
  */
 public enum Gender {
     MALE, FEMALE

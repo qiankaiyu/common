@@ -1,4 +1,4 @@
-package com.chuck.common.utils;
+package com.chuck.common.time;
 
 import static java.util.concurrent.TimeUnit.NANOSECONDS;
 
