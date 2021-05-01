@@ -12,7 +12,7 @@ pipeline{
         stage('Build'){
              steps {
                 sh 'printenv' 
-                sh 'gradle clean && rm -rf ./build/'
+                sh 'gradle clean'
                 sh 'gradle build'
              }
         }
