@@ -5,12 +5,15 @@ pipeline{
             // image 'allbears/jenkins-android:1.0.1'
         // }
     // }
+    tools{
+        gradle 'Gradle-7.0'
+    }
     stages {
         stage('Build'){
              steps {
-                // sh './gradlew clean && rm -rf ./build/'
-                // sh './gradlew build'
-                echo "hello world"
+                sh 'print env' 
+                sh 'gradle clean && rm -rf ./build/'
+                sh 'gradle build'
              }
         }
         // stage('UnitTest'){   
