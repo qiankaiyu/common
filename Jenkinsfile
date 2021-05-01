@@ -11,7 +11,7 @@ pipeline{
     stages {
         stage('Build'){
              steps {
-                sh 'print env' 
+                sh 'printenv' 
                 sh 'gradle clean && rm -rf ./build/'
                 sh 'gradle build'
              }
