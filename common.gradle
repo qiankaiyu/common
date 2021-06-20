@@ -1,10 +1,10 @@
 // 该配置只是作为临时配置，等到common下的代码都移走后，使用common-backup.gradle
 plugins {
-    id 'org.springframework.boot' version '2.5.0-M3'
+    // id 'org.springframework.boot' version '2.5.0-M3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id "io.freefair.lombok" version "5.3.3.3"
-    id "groovy"
+    // id "groovy"
 }
 
 group = 'com.chuck'
@@ -22,18 +22,24 @@ ext {
 }
 
 dependencies {
+    implementation 'javax.servlet:javax.servlet-api:3.0.1'
+    // implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // uitls
+    implementation 'commons-beanutils:commons-beanutils:1.9.3'
+    implementation 'org.apache.poi:poi-ooxml:4.0.1'
+
     // spock test
-   implementation 'org.hamcrest:hamcrest:2.2'
-   testImplementation 'org.spockframework:spock-core:2.0-M4-groovy-3.0'
-   testImplementation 'org.spockframework:spock-spring:2.0-M4-groovy-3.0'
+    //    implementation 'org.hamcrest:hamcrest:2.2'
+    //    testImplementation 'org.spockframework:spock-core:2.0-M4-groovy-3.0'
+    //    testImplementation 'org.spockframework:spock-spring:2.0-M4-groovy-3.0'
     
-    implementation 'org.slf4j:log4j-over-slf4j'
+    implementation 'org.slf4j:log4j-over-slf4j:1.7.25'
     // log4j 2
-    implementation 'org.apache.logging.log4j:log4j-api'
-    implementation 'org.apache.logging.log4j:log4j-core'
+    implementation 'org.apache.logging.log4j:log4j-api:2.13.3'
+    implementation 'org.apache.logging.log4j:log4j-core:2.13.3'
 }
 
-
-tasks.withType(Test).configureEach {
-    useJUnitPlatform()
-}
+// tasks.withType(Test).configureEach {
+//     useJUnitPlatform()
+// }

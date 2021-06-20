@@ -6,7 +6,7 @@ package com.chuck.common.validator;
  * @version 0.0.1
  * 
  * 
- *          为什么Group4Validator要是interface？ TODO
+ *          为什么Group4Validator要是interface？ THINKING
  **/
 public interface Group4Validator {
 
