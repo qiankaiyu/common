@@ -16,7 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  **/
 @Configuration
 @EnableJpaRepositories(basePackages = { "com.chuck.*.infrastructure.repository" })
-@EntityScan(basePackages = { "com.mmc.*.domain" })
+@EntityScan(basePackages = { "com.chuck.*.domain" })
 public class JpaConfig {
 
     // hibernateProperties

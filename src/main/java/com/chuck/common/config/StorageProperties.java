@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @version 0.0.1
  * @apiNote Value Object
  **/
-@ConfigurationProperties(prefix = "mmc.electricity")
+@ConfigurationProperties(prefix = "com.chuck")
 @Configuration
 @Getter
 @Setter
