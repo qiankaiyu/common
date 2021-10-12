@@ -1,23 +1,21 @@
 package com.chuck.common.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.Arrays;
-import java.util.List;
 import javax.annotation.Resource;
 import lombok.Setter;
 import org.springframework.context.annotation.AdviceMode;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.http.MediaType;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.http.converter.xml.SourceHttpMessageConverter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.SpringValidatorAdapter;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
 /**
  *
@@ -48,21 +46,25 @@ public class ContextConfig implements WebMvcConfigurer {
     private ObjectMapper objectMapper;
 
     /**
-     * 仅支持Json的MessageConverters
+     * 仅支持Json的MessageConverters，重载该方法将会去除之前所有预置的Convert（
      */
-    @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(new SourceHttpMessageConverter<>());
-        MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
-        jsonConverter.setSupportedMediaTypes(
-                Arrays.asList(new MediaType("application", "json"), new MediaType("text", "json")));
-        jsonConverter.setObjectMapper(this.objectMapper);
-        converters.add(jsonConverter);
-    }
+//    @Override
+//    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+//        converters.add(new SourceHttpMessageConverter<>());
+//        MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
+//        jsonConverter.setSupportedMediaTypes(
+//                Arrays.asList(new MediaType("application", "json"), new MediaType("text", "json")));
+//        jsonConverter.setObjectMapper(this.objectMapper);
+//        converters.add(jsonConverter);
+//    }
 
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer.defaultContentType(MediaType.APPLICATION_JSON);
     }
 
+    @Bean
+    public LocaleResolver localResolver(){
+        return new AcceptHeaderLocaleResolver();
+    }
 }
