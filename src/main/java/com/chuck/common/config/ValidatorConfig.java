@@ -1,14 +1,10 @@
 package com.chuck.common.config;
 
 import java.nio.charset.StandardCharsets;
-
-import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 
 /**
  *
@@ -24,20 +20,20 @@ public class ValidatorConfig {
      * 
      * @return
      */
-    @Bean
-    public MethodValidationPostProcessor methodValidationPostProcessor() {
-        MethodValidationPostProcessor processor = new MethodValidationPostProcessor();
-        processor.setValidator(localValidatorFactoryBean());
-        return processor;
-    }
+//    @Bean
+//    public MethodValidationPostProcessor methodValidationPostProcessor() {
+//        MethodValidationPostProcessor processor = new MethodValidationPostProcessor();
+//        processor.setValidator(localValidatorFactoryBean());
+//        return processor;
+//    }
 
-    @Bean
-    public LocalValidatorFactoryBean localValidatorFactoryBean() {
-        LocalValidatorFactoryBean factory = new LocalValidatorFactoryBean();
-        factory.setProviderClass(HibernateValidator.class);
-        factory.setValidationMessageSource(messageSource());
-        return factory;
-    }
+//    @Bean
+//    public LocalValidatorFactoryBean localValidatorFactoryBean() {
+//        LocalValidatorFactoryBean factory = new LocalValidatorFactoryBean();
+//        factory.setProviderClass(HibernateValidator.class);
+//        factory.setValidationMessageSource(messageSource());
+//        return factory;
+//    }
 
     @Bean
     public MessageSource messageSource() {
