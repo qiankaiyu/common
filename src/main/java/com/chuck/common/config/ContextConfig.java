@@ -81,7 +81,12 @@ public class ContextConfig implements WebMvcConfigurer {
 
 //    @Override
 //    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler("/static-resources/**").addResourceLocations("/static-resources/" );
 //        registry.addResourceHandler("/files/**").addResourceLocations("classpath:/static/" );
+//    缓存静态内容
+//        registry.addResourceHandler("/static-resources/**").addResourceLocations("/static-resources/" ).setCachePeriod(365*24*60*60);
+//    启用Gzip压缩
+//        registry.addResourceHandler("/static-resources/**").addResourceLocations("/static-resources/" ).resourceChain(true).addResolver(new GzipResourceResolver()).addResolver(new PathResourceResolver());
 //    }
 
     @Override
