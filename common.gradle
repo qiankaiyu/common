@@ -63,7 +63,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     //QueryDSL
-    api "com.querydsl:querydsl-jpa:${queryDslVersion}"
+//    api "com.querydsl:querydsl-jpa:${queryDslVersion}"
     annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}:jpa"
     annotationProcessor 'javax.annotation:javax.annotation-api'
 
