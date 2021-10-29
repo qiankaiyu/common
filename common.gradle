@@ -52,9 +52,6 @@ dependencies {
     //Spring Utils
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-    // Reids
-//    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-
     //Guava
     //implementation 'com.google.guava:guava:20.0'
 
