@@ -21,6 +21,7 @@ import org.springframework.validation.beanvalidation.SpringValidatorAdapter;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.util.UrlPathHelper;
 
@@ -101,4 +102,15 @@ public class ContextConfig implements WebMvcConfigurer {
 //        registry.addResourceHandler(ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/")
 //            .toUriString()).addResourceLocations("file:"+storageProperties.getFileLocation());
 //    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("swagger-ui.html")
+            .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**")
+            .addResourceLocations("classpath:/META-INF/resources/webjars/");
+
+        registry.addResourceHandler( "api/swagger-ui.html" )
+            .addResourceLocations( "classpath:/META-INF/resources/" );
+    }
 }
