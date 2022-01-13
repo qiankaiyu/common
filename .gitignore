@@ -42,3 +42,4 @@ out/
 gradlew
 gradlew.bat
 lombok.config
+**/resources/rebel.xml
