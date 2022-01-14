@@ -40,6 +40,7 @@ import org.springframework.web.util.UrlPathHelper;
 public class ContextConfig implements WebMvcConfigurer {
 
   @Resource @Setter private SpringValidatorAdapter validator;
+
   @Resource @Setter private ObjectMapper objectMapper;
 
   @Value("${com.chuck.fileLocation}")
@@ -111,12 +112,11 @@ public class ContextConfig implements WebMvcConfigurer {
     registry
         .addResourceHandler("swagger-ui.html")
         .addResourceLocations("classpath:/META-INF/resources/");
+
     registry
         .addResourceHandler("/webjars/**")
         .addResourceLocations("classpath:/META-INF/resources/webjars/");
 
-    registry
-        .addResourceHandler("api/swagger-ui.html")
-        .addResourceLocations("classpath:/META-INF/resources/");
+    registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
   }
 }
