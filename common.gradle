@@ -11,7 +11,14 @@ version = '0.0.1'
 sourceCompatibility = '1.8'
 
 ext {
-    queryDslVersion = '4.4.0'
+    set('queryDslVersion', "4.4.0")
+    set('springdocVersion', "1.6.4")
+    set('spockVersion', "2.1-M2-groovy-3.0")
+    set('testcontainersVersion', "1.16.2")
+    set('nexusUrl', "http://192.168.5.85:8081")
+    set('mapstructVersion', '1.4.2.Final')
+    set('jwtVersion', '0.9.1')
+    set('jedisVersion', '3.7.1')
 }
 
 configurations {
@@ -27,9 +34,9 @@ repositories {
 }
 
 sourceSets {
-    generated {
+    main {
         java {
-            srcDirs = ['build/generated/sources/annotationProcessor/java/main']
+            srcDirs += ['build/generated/sources/annotationProcessor/java/main']
         }
     }
 }
@@ -38,7 +45,7 @@ bootJar {
     enabled = false
 }
 jar {
-    enabled=true
+    enabled = true
 }
 
 dependencies {
@@ -73,5 +80,11 @@ dependencies {
     implementation 'commons-beanutils:commons-beanutils:1.9.3'
     implementation 'org.apache.poi:poi-ooxml:4.0.1'
     //implementation 'org.hibernate.validator:hibernate-validator'
+
+    implementation "io.jsonwebtoken:jjwt:${jwtVersion}"
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation "redis.clients:jedis:${jedisVersion}"
+
 
 }
