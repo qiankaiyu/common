@@ -42,7 +42,7 @@ sourceSets {
 }
 
 bootJar {
-    enabled = false
+    enabled = true
 }
 jar {
     enabled = true
