@@ -1,5 +1,6 @@
 package com.chuck.common.config;
 
+import com.chuck.common.file.config.StorageProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Arrays;
 import java.util.List;

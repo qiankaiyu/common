@@ -11,7 +11,7 @@ version = '0.0.1'
 sourceCompatibility = '1.8'
 
 ext {
-    set('queryDslVersion', "4.4.0")
+    set('queryDslVersion', "4.1.4")
     set('springdocVersion', "1.6.4")
     set('spockVersion', "2.1-M2-groovy-3.0")
     set('testcontainersVersion', "1.16.2")
@@ -30,7 +30,6 @@ configurations {
 repositories {
     mavenLocal()
     mavenCentral()
-    maven { url 'https://repo.spring.io/milestone' }
 }
 
 sourceSets {
@@ -42,19 +41,22 @@ sourceSets {
 }
 
 bootJar {
-    enabled = true
+    enabled = false
 }
 jar {
     enabled = true
 }
 
 dependencies {
+//    初步依赖
     compileOnly 'com.chuck:base:0.0.1'
+    implementation "io.jsonwebtoken:jjwt:${jwtVersion}"
     //Starter
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 
     //Spring Utils
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -62,13 +64,9 @@ dependencies {
     //Guava
     //implementation 'com.google.guava:guava:20.0'
 
-    //Lombok
-//    compileOnly 'org.projectlombok:lombok'
-//    annotationProcessor 'org.projectlombok:lombok'
-
     //QueryDSL
-//    api "com.querydsl:querydsl-jpa:${queryDslVersion}"
-    annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}:jpa"
+    api "com.querydsl:querydsl-jpa:${queryDslVersion}"
+    annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}"
     annotationProcessor 'javax.annotation:javax.annotation-api'
 
     // log4j 2
@@ -81,10 +79,6 @@ dependencies {
     implementation 'org.apache.poi:poi-ooxml:4.0.1'
     //implementation 'org.hibernate.validator:hibernate-validator'
 
-    implementation "io.jsonwebtoken:jjwt:${jwtVersion}"
-
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation "redis.clients:jedis:${jedisVersion}"
-
-
 }
