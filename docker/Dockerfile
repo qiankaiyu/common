@@ -2,7 +2,7 @@ FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 ARG JAVA_OPTS
 ENV JAVA_OPTS=${JAVA_OPTS}
-COPY build/libs/demo-0.0.1-SNAPSHOT.jar demo.jar
+COPY build/libs/demo-0.0.1.jar demo.jar
 EXPOSE 3000
 # ENTRYPOINT exec java $JAVA_OPTS -jar configserver.jar
 # For Spring-Boot project, use the entrypoint below to reduce Tomcat startup time.

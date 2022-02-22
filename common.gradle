@@ -1,7 +1,8 @@
 plugins {
-    id 'org.springframework.boot' version '2.5.5'
+    id 'org.springframework.boot' version '2.5.7'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id "io.freefair.lombok" version "5.3.3.3"
+    id 'idea'
     id 'java-library'
     id 'java'
 }
@@ -19,6 +20,7 @@ ext {
     set('mapstructVersion', '1.4.2.Final')
     set('jwtVersion', '0.9.1')
     set('jedisVersion', '3.7.1')
+    baseVersion = "0.0.1"
 }
 
 configurations {
@@ -33,7 +35,7 @@ repositories {
 }
 
 sourceSets {
-    main {
+    generated {
         java {
             srcDirs += ['build/generated/sources/annotationProcessor/java/main']
         }
@@ -49,36 +51,20 @@ jar {
 
 dependencies {
 //    初步依赖
-    compileOnly 'com.chuck:base:0.0.1'
+    compileOnly "com.chuck:base:${baseVersion}"
     implementation "io.jsonwebtoken:jjwt:${jwtVersion}"
-    //Starter
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-
-    //Spring Utils
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
-    //Guava
-    //implementation 'com.google.guava:guava:20.0'
-
-    //QueryDSL
     api "com.querydsl:querydsl-jpa:${queryDslVersion}"
-    annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}"
+    annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}:jpa"
     annotationProcessor 'javax.annotation:javax.annotation-api'
-
-    // log4j 2
-    implementation 'org.slf4j:log4j-over-slf4j'
-    implementation 'org.apache.logging.log4j:log4j-api'
-    implementation 'org.apache.logging.log4j:log4j-core'
-
-    //Other
+    annotationProcessor("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation 'commons-beanutils:commons-beanutils:1.9.3'
     implementation 'org.apache.poi:poi-ooxml:4.0.1'
-    //implementation 'org.hibernate.validator:hibernate-validator'
-
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation "redis.clients:jedis:${jedisVersion}"
 }
