@@ -32,7 +32,7 @@ import org.springframework.web.util.UrlPathHelper;
  * @version 0.0.1
  * @apiNote
  */
-@Configuration
+//@Configuration
 @EnableWebMvc
 @EnableTransactionManagement(
     mode = AdviceMode.PROXY,
