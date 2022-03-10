@@ -2,9 +2,10 @@ plugins {
     id 'org.springframework.boot' version '2.5.7'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id "io.freefair.lombok" version "5.3.3.3"
-    id 'idea'
+    id 'maven-publish'
     id 'java-library'
     id 'java'
+    id 'idea'
 }
 
 group = 'com.chuck'
@@ -12,15 +13,16 @@ version = '0.0.1'
 sourceCompatibility = '1.8'
 
 ext {
-    set('queryDslVersion', "4.1.4")
+    set('queryDslVersion', "4.4.0")
     set('springdocVersion', "1.6.4")
     set('spockVersion', "2.1-M2-groovy-3.0")
     set('testcontainersVersion', "1.16.2")
     set('nexusUrl', "http://192.168.5.85:8081")
     set('mapstructVersion', '1.4.2.Final')
+    set('knife4jVersion', "2.0.7")
     set('jwtVersion', '0.9.1')
     set('jedisVersion', '3.7.1')
-    baseVersion = "0.0.1"
+    set('baseVersion', "0.0.1")
 }
 
 configurations {
@@ -35,7 +37,7 @@ repositories {
 }
 
 sourceSets {
-    generated {
+    main {
         java {
             srcDirs += ['build/generated/sources/annotationProcessor/java/main']
         }
@@ -52,19 +54,56 @@ jar {
 dependencies {
 //    初步依赖
     compileOnly "com.chuck:base:${baseVersion}"
-    implementation "io.jsonwebtoken:jjwt:${jwtVersion}"
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     api "com.querydsl:querydsl-jpa:${queryDslVersion}"
     annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}:jpa"
     annotationProcessor 'javax.annotation:javax.annotation-api'
     annotationProcessor("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation "io.jsonwebtoken:jjwt:${jwtVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'commons-beanutils:commons-beanutils:1.9.3'
     implementation 'org.apache.poi:poi-ooxml:4.0.1'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation "redis.clients:jedis:${jedisVersion}"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+java {
+//    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId 'common'
+            from components.java
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            def releasesRepoUrl = "${nexusUrl}/repository/maven-releases/"
+            def snapshotsRepoUrl = "${nexusUrl}/repository/maven-snapshots/"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            allowInsecureProtocol = true
+            credentials {
+                username 'admin'
+                password '1234567'
+            }
+        }
+    }
+}
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
 }
