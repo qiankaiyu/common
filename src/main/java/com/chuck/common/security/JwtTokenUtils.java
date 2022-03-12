@@ -3,7 +3,7 @@ package com.chuck.common.security;
 import com.chuck.common.security.value.Authority;
 import com.chuck.common.security.value.BaseUserDetails;
 import com.chuck.common.security.value.JwtToken;
-import com.chuck.common.utils.StringUtils;
+import com.chuck.common.utils.string.StringUtils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

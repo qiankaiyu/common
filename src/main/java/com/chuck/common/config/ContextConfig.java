@@ -1,6 +1,6 @@
 package com.chuck.common.config;
 
-import com.chuck.common.file.config.StorageProperties;
+import com.chuck.common.utils.file.config.StorageProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +9,6 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.AdviceMode;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -32,7 +31,7 @@ import org.springframework.web.util.UrlPathHelper;
  * @version 0.0.1
  * @apiNote
  */
-//@Configuration
+// @Configuration
 @EnableWebMvc
 @EnableTransactionManagement(
     mode = AdviceMode.PROXY,
