@@ -33,6 +33,14 @@ configurations {
 
 repositories {
     mavenLocal()
+    maven {
+        url "${nexusUrl}/repository/maven-public"
+        allowInsecureProtocol true
+        credentials {
+            username 'admin'
+            password '1234567'
+        }
+    }
     mavenCentral()
 }
 
