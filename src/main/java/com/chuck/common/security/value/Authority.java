@@ -13,8 +13,6 @@ import org.springframework.security.core.GrantedAuthority;
 @AllArgsConstructor
 public class Authority implements GrantedAuthority {
 
-    /**
-     * 使用角色名称表示Authority（权限）
-     */
-    private String authority;
+  /** 使用角色名称表示Authority（权限），实际是权限集合 */
+  private String authority;
 }

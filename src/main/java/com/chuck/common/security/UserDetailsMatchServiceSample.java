@@ -9,6 +9,4 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  * @author: Chuck
  * @date: 2/19/2022 11:21 AM
  */
-public abstract class UserDetailsMatchService implements UserDetailsService {
-
-}
+public abstract class UserDetailsMatchServiceSample implements UserDetailsService {}
