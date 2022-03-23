@@ -38,9 +38,7 @@ public abstract class FileUtils {
    */
   public static void downloadFile(HttpServletResponse response, File file, String newFileName) {
     try {
-      response.setHeader(
-          "Content-Disposition",
-          "attachment; filename=" + new String(newFileName.getBytes("ISO-8859-1"), "UTF-8"));
+      response.setHeader("Content-Disposition", "attachment; filename=" + newFileName);
       BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
       InputStream is = new FileInputStream(file.getAbsolutePath());
       BufferedInputStream bis = new BufferedInputStream(is);
