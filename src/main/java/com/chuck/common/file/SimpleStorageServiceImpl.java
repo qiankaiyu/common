@@ -1,7 +1,5 @@
 package com.chuck.common.file;
 
-import com.chuck.base.exception.BaseException;
-import com.chuck.common.file.config.StorageProperties;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -10,16 +8,22 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
+
 import javax.annotation.PostConstruct;
-import lombok.extern.slf4j.Slf4j;
+import javax.annotation.Resource;
+
+import com.chuck.base.exception.BaseException;
+import com.chuck.common.file.config.StorageProperties;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Administrator
@@ -77,7 +81,8 @@ public class SimpleStorageServiceImpl implements StorageService {
       }
     } catch (IOException e) {
       log.error(e.getMessage());
-      throw new BaseException("Failed to store file " + newName, BaseException.FILE_UPLOAD_ERROR);
+      throw new BaseException("Failed to store file " + newName + ",cause: " + e.getMessage(),
+          BaseException.FILE_UPLOAD_ERROR);
     }
     return newName;
   }
