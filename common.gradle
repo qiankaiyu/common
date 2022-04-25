@@ -61,7 +61,7 @@ jar {
 
 dependencies {
 //    初步依赖
-    compileOnly "com.chuck:base:${baseVersion}"
+    implementation project(':base')
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     api "com.querydsl:querydsl-jpa:${queryDslVersion}"
     annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}:jpa"
