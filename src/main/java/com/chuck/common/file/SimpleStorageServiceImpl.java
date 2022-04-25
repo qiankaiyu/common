@@ -10,13 +10,13 @@ import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 
 import com.chuck.base.exception.BaseException;
 import com.chuck.common.file.config.StorageProperties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
