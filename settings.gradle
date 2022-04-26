@@ -1,10 +1,8 @@
-pluginManagement {
-	repositories {
-		maven { url 'https://repo.spring.io/milestone' }
-		gradlePluginPortal()
-	}
-}
 rootProject.name = 'common'
-rootProject.buildFileName='common.gradle'
 
-includeBuild '../base'
+include 'common'
+include 'base'
+
+rootProject.children.each {
+    it.buildFileName = it.name + '.gradle'
+}

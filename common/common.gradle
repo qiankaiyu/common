@@ -1,0 +1,85 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id "io.freefair.lombok" version "5.3.3.3"
+//    id 'maven-publish'
+    id 'java-library'
+    id 'java'
+    id 'idea'
+}
+
+group = 'com.chuck'
+version = '0.0.1'
+sourceCompatibility = '1.8'
+
+ext {
+    set('queryDslVersion', "4.4.0")
+    set('springdocVersion', "1.6.4")
+    set('spockVersion', "2.1-M2-groovy-3.0")
+    set('testcontainersVersion', "1.16.2")
+    set('nexusUrl', "http://192.168.5.85:8081")
+    set('mapstructVersion', '1.4.2.Final')
+    set('knife4jVersion', "2.0.7")
+    set('validationApiVersion', "2.0.0.Final")
+    set('validatorVersion', "6.0.22.Final")
+    set('baseVersion', '0.0.1')
+    set('commonVersion', '0.0.1')
+    set("guavaVersion", "20.0")
+    set('jwtVersion', '0.9.1')
+    set('jedisVersion', '3.7.1')
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs += ['build/generated/sources/annotationProcessor/java/main']
+        }
+    }
+}
+
+bootJar {
+    enabled = false
+}
+jar {
+    enabled = true
+}
+
+dependencies {
+//    初步依赖
+    implementation project(":base")
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    api "com.querydsl:querydsl-jpa:${queryDslVersion}"
+    annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}:jpa"
+    annotationProcessor 'javax.annotation:javax.annotation-api'
+    annotationProcessor("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation "io.jsonwebtoken:jjwt:${jwtVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'commons-beanutils:commons-beanutils:1.9.3'
+    implementation 'org.apache.poi:poi-ooxml:4.0.1'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation "redis.clients:jedis:${jedisVersion}"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+java {
+//    withJavadocJar()
+    withSourcesJar()
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}
